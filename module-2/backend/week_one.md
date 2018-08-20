@@ -99,7 +99,7 @@ no, it allows you to create/modify a table with attributes, then you can migrate
 
 18. How does a model relate to a database?
 
-thru the migration file
+The model sets the object with attributes, and the object becomes a row in the database with those respective attributes as column names
 
 19. What is the difference between `#new` and `#create`?
 
