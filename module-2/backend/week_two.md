@@ -1,6 +1,6 @@
 ## Week Two - Module 2 Recap
 
-Fork or re-pull this respository. Answer the questions to the best of your ability. Try to answer them with limited amount of external research. These questions cover the majority of what we've learned this week (which is a TON - YOU are a web developer!!!). 
+Fork or re-pull this respository. Answer the questions to the best of your ability. Try to answer them with limited amount of external research. These questions cover the majority of what we've learned this week (which is a TON - YOU are a web developer!!!).
 
 Note: When you're done, submit a PR.
 
@@ -8,6 +8,9 @@ Note: When you're done, submit a PR.
 ### Week 2 Questions
 
 1. At a high level, what is ActiveRecord? What does it do/allow you to do?
+
+Its a simplified language that simplifies SQL requests. It allows you to speak with the database for queries and changes.
+
 2. Assume you have the following model:
 
 ```ruby
@@ -17,7 +20,17 @@ end
 
 What are some methods you can call on `Team`? If these methods aren't defined in the class, how do you have access to them?
 
+Team.all
+Team.find
+Team.where
+Team.create
+They are active record methods.
+
 3. Assume that in your database, a team has the following attributes: "id", "name", owner_id". How would you find the name of a team with an id of 4? Assuming your class only included the code from question 2, how could you find the owner of the same team?
+
+team = Team.where(id: 4)
+team.name
+Owner.where(id: team.owner_id)
 
 4. Assume that you added a line to your `Team` class as follows:
 
@@ -29,11 +42,35 @@ end
 
 Now how would you find the owner of the team with an id of 4?
 
+team = Team.where(id: 4)
+team.owner
+
 5. In a database that's holding students and teachers, what will be the relationship between students and teachers? Draw the schema diagram.
+
+Teacher has_many :students
+students belong_to :teacher
+
+Teachers      |     Students
+--------           --------
+id------____        id
+name        |       name
+            |------ teacher_id
+
 6. Define foreign key, primary key, and schema.
+
+foreign key - A column in a table that refers to the primary key of another table
+primary key - The column in the table that has a key referring to that specific row in the table
+schema - is one or more initially unpopulated tables, with attributes defined by the migration files.
+
 7. Describe the relationship between a foreign key on one table and a primary key on another table.
+
+The primary key of a table that has a 'has_many' relationship with its 'belong_to' table, is the foreign key in the 'belong_to' table.
+
 8. What are the parts of an HTTP response?
 
+Status Line - includes the protocol version, status code, status text.
+Header
+Body
 
 ### Optional Questions
 
@@ -50,11 +87,11 @@ Now how would you find the owner of the team with an id of 4?
 ### Self Assessment:
 Choose One:
 * I was able to answer every question without relying on outside resources
-* I was able to answer most questions independently, but utilized outside resources for a few
-* I was able to answer a few questions independently, but relied heavily on outside resources 
+## * I was able to answer most questions independently, but utilized outside resources for a few
+* I was able to answer a few questions independently, but relied heavily on outside resources
 
 Choose One:
 * I feel confident about the content presented this week
 * I feel comfortable with the content presented this week
-* I feel overwhelmed by the content presented this week
+## * I feel overwhelmed by the content presented this week
 * I feel quite lost by the content presented this week
